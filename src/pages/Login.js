@@ -6,16 +6,21 @@ function Login() {
   const [password, setPassword] = useState("");
 
   const login = async () => {
-    try {
-      const res = await API.post("/login", { email, password });
-      localStorage.setItem("token", res.data.token);
-      window.location.href = "/dashboard";
-    } catch (err) {
+  try {
+    const res = await API.post("/login", { email, password });
+    localStorage.setItem("token", res.data.token);
+    window.location.href = "/dashboard";
+  } catch (err) {
+    if (!err.response) {
       alert(
-        err.response?.data?.message || "Login failed. Check credentials."
+        "Server is waking up (Render free tier). Please wait 10–15 seconds and click Login again.\n\nFor code details, check GitHub."
       );
+    } else {
+      alert(err.response.data.message || "Login failed");
     }
-  };
+  }
+};
+
 
   return (
     <div className="container">
