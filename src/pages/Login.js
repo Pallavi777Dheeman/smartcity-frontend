@@ -45,6 +45,17 @@ function Login() {
         {loading ? "Please wait..." : "Login"}
       </button>
 
+      {/* Register link */}
+      <p style={{ marginTop: "10px", textAlign: "center" }}>
+        New user?{" "}
+        <span
+          style={{ color: "#3498db", cursor: "pointer" }}
+          onClick={() => (window.location.href = "/register")}
+        >
+          Register
+        </span>
+      </p>
+
       <p style={{ fontSize: "12px", color: "#666", textAlign: "center" }}>
         Note: Backend is hosted on Render free tier and may take a few seconds to respond.
       </p>
