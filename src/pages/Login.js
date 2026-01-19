@@ -46,7 +46,7 @@ function Login() {
       </button>
 
       <p style={{ fontSize: "12px", color: "#666", textAlign: "center" }}>
-        Note: Backend is hosted on free tier and may take a few seconds to respond.
+        Note: Backend is hosted on Render free tier and may take a few seconds to respond.
       </p>
     </div>
   );
