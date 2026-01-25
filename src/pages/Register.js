@@ -12,7 +12,7 @@ function Register() {
     try {
       // Updated path to match backend
       const res = await API.post("/register", { email, password });
-
+         console.log(res.data); 
       alert("Registration successful! Please login.");
       window.location.href = "/login";
     } catch (err) {
