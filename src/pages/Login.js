@@ -11,6 +11,7 @@ function Login() {
 
     try {
       const res = await API.post("/login", { email, password });
+
       localStorage.setItem("token", res.data.token);
       window.location.href = "/dashboard";
     } catch (err) {

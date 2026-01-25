@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://smartcity-dheq.onrender.com/api/auth"
-});
+  baseURL: "https://smartcity-backend-x1lw.onrender.com/api/auth",
+  });
 
 API.interceptors.request.use((req) => {
   const token = localStorage.getItem("token");

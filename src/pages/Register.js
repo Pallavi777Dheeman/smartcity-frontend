@@ -1,5 +1,5 @@
 import { useState } from "react";
-import API from "../api";
+import API from "../api"; // Axios instance
 
 function Register() {
   const [email, setEmail] = useState("");
@@ -8,14 +8,21 @@ function Register() {
 
   const register = async () => {
     setLoading(true);
+
     try {
-      await API.post("/register", { email, password });
-      alert("Registration successful. Please login.");
-      window.location.href = "/";
+      // Updated path to match backend
+      const res = await API.post("/register", { email, password });
+
+      alert("Registration successful! Please login.");
+      window.location.href = "/login";
     } catch (err) {
-      alert(
-        err.response?.data?.message || "Registration failed"
-      );
+      if (!err.response) {
+        alert(
+          "Backend server is waking up (free tier). Please wait 10–15 seconds and try again."
+        );
+      } else {
+        alert(err.response.data.message || "Registration failed");
+      }
     } finally {
       setLoading(false);
     }
@@ -40,11 +47,11 @@ function Register() {
         {loading ? "Please wait..." : "Register"}
       </button>
 
-      <p style={{ marginTop: "10px" }}>
+      <p style={{ marginTop: "10px", textAlign: "center" }}>
         Already have an account?{" "}
         <span
           style={{ color: "#3498db", cursor: "pointer" }}
-          onClick={() => (window.location.href = "/")}
+          onClick={() => (window.location.href = "/login")}
         >
           Login
         </span>
